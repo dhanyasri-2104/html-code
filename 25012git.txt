@@ -1,0 +1,95 @@
+
+<html>
+    <head>
+    <title>Self-CheckIn</title>
+    
+    <style>
+        *
+
+body{
+  
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+
+
+}
+
+body{    font-family:"italic";    text-align: center;}form{    background:navyblue; border:2px dashed gray;   width: 400px;    padding: 30px;    border-radius: 20px;    box-shadow: 0 10 20px white-space;    margin: auto;} 
+
+
+ </style>
+
+
+ 
+
+
+    </head>
+    <body>
+    
+    
+    
+    <h1 style= text-align:center;color:indigo; font-size:50;" >Self-CheckIn</h1>
+    <form action="">
+    <form>
+    <table>
+    <tr>
+    <td style=color:blue;font-size:23;font-family:italic;">Name<td><input type="text" id="Name" onkeydown="return /[a-z]/i.test(event.key)">
+     
+    </td></tr>
+    <tr><td style=color:blue;font-size:23;font-family:italic;">Aadhar<td><input type="text" id="Aadhar" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" <input maxlength="12"required="required"> 
+    </td></tr>
+    <tr><td style=color:blue;font-size:23;font-family:italic;">
+    Mobile<td>
+    <input type="text" id="Mobile" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" <input maxlength="10"required="required"> 
+    </td></tr>
+    <tr><td style=color:blue;font-size:23;font-family:italic;">
+    OTP<td><input type="text" id="OTP" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" <input maxlength="6"required="required"> 
+    </td></tr>
+     
+    <tr><td>
+    
+   
+     <input class=button type ="Submit" style="color: whitesmoke;text-align:center; background-color: darkgreen; "onclick="saveFile()" / >
+     
+    
+    
+     
+    </form>
+    </body>
+
+    <script>
+    let saveFile = () => {
+    	
+        // Get the data from each element on the form.
+    	const Name = document.getElementById('Name');
+        const Aadhar = document.getElementById('Aadhar');
+        const Mobile = document.getElementById('Mobile');
+        
+        
+        // This variable stores all the data.
+        let data = 
+            '\r Name: ' + Name.value + ' \r\n ' + 
+            'Aadhar' +Aadhar.value + ' \r\n ' + 
+            'Mobile' + Mobile.value;
+        
+        // Convert the text to BLOB.
+        const textToBLOB =  new Blob([data], {type: 'text/plain'});
+        const sFileName = 'Save.txt';	   // The file to save the data.
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+        newLink.click(); 
+    }
+</script>
+</html
+    
+    </html>
